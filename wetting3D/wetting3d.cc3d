@@ -1,0 +1,5 @@
+<Simulation version="4.8.0">
+   <XMLScript Type="XMLScript">Simulation/wetting3d.xml</XMLScript>
+   <PythonScript Type="PythonScript">Simulation/wetting3d.py</PythonScript>
+   <Resource Type="Python">Simulation/wetting3dSteppables.py</Resource>
+</Simulation>
