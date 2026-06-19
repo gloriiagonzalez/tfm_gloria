@@ -1,0 +1,155 @@
+<CompuCell3D Revision="20260214" Version="4.8.0">
+   
+   <Metadata>
+      
+      <!-- Basic properties simulation -->
+      <NumberOfProcessors>1</NumberOfProcessors>
+      <DebugOutputFrequency>10</DebugOutputFrequency>
+      <!-- <NonParallelModule Name="Potts"/> -->
+      <MCSConversionFactor DisplayName="minute" Units="min">1.0</MCSConversionFactor>
+      <VoxelConversionFactor DisplayName="micrometer" Units="um">2</VoxelConversionFactor>
+   </Metadata>
+   
+   <Potts>
+      
+      <!-- Basic properties of CPM (GGH) algorithm -->
+      <Dimensions x="100" y="100" z="50"/>
+      <Steps>60000</Steps>
+      <Temperature>10.0</Temperature>
+      <NeighborOrder>7</NeighborOrder>
+   </Potts>
+   
+   <Plugin Name="CellType">
+      
+      <!-- Listing all cell types in the simulation -->
+      <CellType TypeId="0" TypeName="Medium"/>
+      <CellType TypeId="1" TypeName="cells"/>
+      <CellType Freeze="" TypeId="2" TypeName="wall1"/>
+      <CellType Freeze="" TypeId="3" TypeName="wall2"/>
+      <CellType Freeze="" TypeId="4" TypeName="wall3"/>
+      <CellType Freeze="" TypeId="5" TypeName="wall4"/>
+      <CellType Freeze="" TypeId="6" TypeName="wall5"/>
+      <CellType Freeze="" TypeId="7" TypeName="wall6"/>
+      <CellType Freeze="" TypeId="8" TypeName="wall7"/>
+      <CellType Freeze="" TypeId="9" TypeName="wall8"/>
+      <CellType Freeze="" TypeId="10" TypeName="wall9"/>
+      <CellType Freeze="" TypeId="11" TypeName="wall10"/>
+   </Plugin>
+   
+<Plugin Name="Volume">
+   <VolumeEnergyParameters CellType="cells" LambdaVolume="5.0" TargetVolume="120.0"/>
+</Plugin>
+   
+   <Plugin Name="CenterOfMass">
+      
+      <!-- Module tracking center of mass of each cell -->
+   </Plugin>
+   
+   <Plugin Name="NeighborTracker">
+      
+      <!-- Module tracking neighboring cells of each cell -->
+   </Plugin>
+    <Plugin Name="Contact">
+
+    <!-- medium -->
+        <Energy Type1="Medium" Type2="Medium">0.0</Energy>
+        <Energy Type1="Medium" Type2="cells">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall1">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall2">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall3">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall4">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall5">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall6">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall7">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall8">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall9">7.0</Energy>
+        <Energy Type1="Medium" Type2="wall10">7.0</Energy>
+
+    <!-- cells-cells -->
+        <Energy Type1="cells" Type2="cells">5.0</Energy>
+
+    <!-- cells-wall (gradiente) -->
+        <Energy Type1="cells" Type2="wall1">1.0</Energy>
+        <Energy Type1="cells" Type2="wall2">2.0</Energy>
+        <Energy Type1="cells" Type2="wall3">3.0</Energy>
+        <Energy Type1="cells" Type2="wall4">4.0</Energy>
+        <Energy Type1="cells" Type2="wall5">5.0</Energy>
+        <Energy Type1="cells" Type2="wall6">6.0</Energy>
+        <Energy Type1="cells" Type2="wall7">7.0</Energy>
+        <Energy Type1="cells" Type2="wall8">8.0</Energy>
+        <Energy Type1="cells" Type2="wall9">9.0</Energy>
+        <Energy Type1="cells" Type2="wall10">10.0</Energy>        
+        
+    <!-- wall-wall (todos 7) -->
+        <Energy Type1="wall1"  Type2="wall1">7.0</Energy>
+        <Energy Type1="wall1"  Type2="wall2">7.0</Energy>
+        <Energy Type1="wall1"  Type2="wall3">7.0</Energy>
+        <Energy Type1="wall1"  Type2="wall4">7.0</Energy>
+        <Energy Type1="wall1"  Type2="wall5">7.0</Energy>
+        <Energy Type1="wall1"  Type2="wall6">7.0</Energy>
+        <Energy Type1="wall1"  Type2="wall7">7.0</Energy>
+        <Energy Type1="wall1"  Type2="wall8">7.0</Energy>
+        <Energy Type1="wall1"  Type2="wall9">7.0</Energy>
+        <Energy Type1="wall1"  Type2="wall10">7.0</Energy>
+        <Energy Type1="wall2"  Type2="wall2">7.0</Energy>
+        <Energy Type1="wall2"  Type2="wall3">7.0</Energy>
+        <Energy Type1="wall2"  Type2="wall4">7.0</Energy>
+        <Energy Type1="wall2"  Type2="wall5">7.0</Energy>
+        <Energy Type1="wall2"  Type2="wall6">7.0</Energy>
+        <Energy Type1="wall2"  Type2="wall7">7.0</Energy>
+        <Energy Type1="wall2"  Type2="wall8">7.0</Energy>
+        <Energy Type1="wall2"  Type2="wall9">7.0</Energy>
+        <Energy Type1="wall2"  Type2="wall10">7.0</Energy>
+        <Energy Type1="wall3"  Type2="wall3">7.0</Energy>
+        <Energy Type1="wall3"  Type2="wall4">7.0</Energy>
+        <Energy Type1="wall3"  Type2="wall5">7.0</Energy>
+        <Energy Type1="wall3"  Type2="wall6">7.0</Energy>
+        <Energy Type1="wall3"  Type2="wall7">7.0</Energy>
+        <Energy Type1="wall3"  Type2="wall8">7.0</Energy>
+        <Energy Type1="wall3"  Type2="wall9">7.0</Energy>
+        <Energy Type1="wall3"  Type2="wall10">7.0</Energy>
+        <Energy Type1="wall4"  Type2="wall4">7.0</Energy>
+        <Energy Type1="wall4"  Type2="wall5">7.0</Energy>
+        <Energy Type1="wall4"  Type2="wall6">7.0</Energy>
+        <Energy Type1="wall4"  Type2="wall7">7.0</Energy>
+        <Energy Type1="wall4"  Type2="wall8">7.0</Energy>
+        <Energy Type1="wall4"  Type2="wall9">7.0</Energy>
+        <Energy Type1="wall4"  Type2="wall10">7.0</Energy>
+        <Energy Type1="wall5"  Type2="wall5">7.0</Energy>
+        <Energy Type1="wall5"  Type2="wall6">7.0</Energy>
+        <Energy Type1="wall5"  Type2="wall7">7.0</Energy>
+        <Energy Type1="wall5"  Type2="wall8">7.0</Energy>
+        <Energy Type1="wall5"  Type2="wall9">7.0</Energy>
+        <Energy Type1="wall5"  Type2="wall10">7.0</Energy>
+        <Energy Type1="wall6"  Type2="wall6">7.0</Energy>
+        <Energy Type1="wall6"  Type2="wall7">7.0</Energy>
+        <Energy Type1="wall6"  Type2="wall8">7.0</Energy>
+        <Energy Type1="wall6"  Type2="wall9">7.0</Energy>
+        <Energy Type1="wall6"  Type2="wall10">7.0</Energy>
+        <Energy Type1="wall7"  Type2="wall7">7.0</Energy>
+        <Energy Type1="wall7"  Type2="wall8">7.0</Energy>
+        <Energy Type1="wall7"  Type2="wall9">7.0</Energy>
+        <Energy Type1="wall7"  Type2="wall10">7.0</Energy>
+        <Energy Type1="wall8"  Type2="wall8">7.0</Energy>
+        <Energy Type1="wall8"  Type2="wall9">7.0</Energy>
+        <Energy Type1="wall8"  Type2="wall10">7.0</Energy>
+        <Energy Type1="wall9"  Type2="wall9">7.0</Energy>
+        <Energy Type1="wall9"  Type2="wall10">7.0</Energy>
+        <Energy Type1="wall10" Type2="wall10">7.0</Energy>
+
+        <NeighborOrder>7</NeighborOrder>
+    </Plugin>
+   
+   
+   <Steppable Type="BlobInitializer">
+      
+      <!-- Initial layout of cells in the form of spherical (circular in 2D) blob -->
+      <Region>
+         <Center x="80" y="50" z="26"/>
+         <Radius>10</Radius>
+         <Gap>0</Gap>
+         <Width>5</Width>
+         <Types>cells</Types>
+      </Region>
+   </Steppable>
+</CompuCell3D>

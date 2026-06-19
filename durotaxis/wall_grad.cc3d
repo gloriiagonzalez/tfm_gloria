@@ -1,0 +1,5 @@
+<Simulation version="4.8.0">
+   <XMLScript Type="XMLScript">Simulation/wall_grad.xml</XMLScript>
+   <PythonScript Type="PythonScript">Simulation/wall_grad.py</PythonScript>
+   <Resource Type="Python">Simulation/wall_gradSteppables.py</Resource>
+</Simulation>
