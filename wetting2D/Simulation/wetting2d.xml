@@ -1,0 +1,68 @@
+<CompuCell3D Revision="20260214" Version="4.8.0">
+   
+   <Metadata>
+      
+      <!-- Basic properties simulation -->
+      <NumberOfProcessors>1</NumberOfProcessors>
+      <DebugOutputFrequency>10</DebugOutputFrequency>
+      <!-- <NonParallelModule Name="Potts"/> -->
+      <MCSConversionFactor DisplayName="minute" Units="min">1.0</MCSConversionFactor>
+      <VoxelConversionFactor DisplayName="micrometer" Units="um">2</VoxelConversionFactor>
+   </Metadata>
+   
+   <Potts>
+      
+      <!-- Basic properties of CPM (GGH) algorithm -->
+      <Dimensions x="500" y="250" z="1"/>
+      <Steps>40000</Steps>
+      <Temperature>10.0</Temperature>
+      <NeighborOrder>1</NeighborOrder>
+   </Potts>
+   
+   <Plugin Name="CellType">
+      
+      <!-- Listing all cell types in the simulation -->
+      <CellType TypeId="0" TypeName="Medium"/>
+      <CellType TypeId="1" TypeName="cells"/>
+      <CellType Freeze="" TypeId="2" TypeName="wall"/>
+   </Plugin>
+   
+   <Plugin Name="Volume">
+      <VolumeEnergyParameters CellType="cells" LambdaVolume="5.0" TargetVolume="25"/>
+   </Plugin>
+   
+   <Plugin Name="CenterOfMass">
+      
+      <!-- Module tracking center of mass of each cell -->
+   </Plugin>
+   
+   <Plugin Name="NeighborTracker">
+      
+      <!-- Module tracking neighboring cells of each cell -->
+   </Plugin>
+   
+   <Plugin Name="Contact">
+      <!-- Specification of adhesion energies -->
+      <Energy Type1="Medium" Type2="Medium">0.0</Energy>
+      
+      <Energy Type1="Medium" Type2="cells">10.0</Energy>
+      <Energy Type1="Medium" Type2="wall">10.0</Energy>
+      <Energy Type1="cells" Type2="cells">5.0</Energy>
+      <Energy Type1="cells" Type2="wall">14.0</Energy>
+      
+      <Energy Type1="wall" Type2="wall">0.0</Energy>
+      <NeighborOrder>4</NeighborOrder>
+   </Plugin>
+   
+   <Steppable Type="BlobInitializer">
+      
+      <!-- Initial layout of cells in the form of spherical (circular in 2D) blob -->
+      <Region>
+         <Center x="250" y="45" z="0"/>
+         <Radius>25</Radius>
+         <Gap>0</Gap>
+         <Width>4</Width>
+         <Types>cells</Types>
+      </Region>
+   </Steppable>
+</CompuCell3D>
